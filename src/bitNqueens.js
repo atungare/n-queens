@@ -23,6 +23,6 @@ var bitNQueens = function(num) {
 
 };
 
-var now = new Date();
-bitNQueens(16);
-console.log(16, (new Date() - now));
+// var now = new Date();
+// bitNQueens(16);
+// console.log(16, (new Date() - now));

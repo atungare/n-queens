@@ -51,9 +51,7 @@ window.findNRooksSolution = function(n) {
   var placeElemInRow = function(curCol) {
     if(!solution) {
       if (curCol === n){
-        solution = _.map(curBoard.rows(), function(innerArr) {
-          return innerArr.slice(0);
-        });
+        solution = JSON.stringify(curBoard.rows());
         return;
       }
       for (var curRow = 0; curRow < n; curRow++){
@@ -69,7 +67,7 @@ window.findNRooksSolution = function(n) {
   placeElemInRow(0);
 
   console.log('Single solution for ' + n + ' rooks:', JSON.stringify(solution));
-  return solution;
+  return JSON.parse(solution);
 };
 
 
@@ -131,10 +129,7 @@ window.findNQueensSolution = function(n) {
   var placeElemInRow = function(curCol) {
     if(!solution) {
       if (curCol === n){
-        solution = _.map(curBoard.rows(), function(innerArr) {
-          return innerArr.slice(0);
-        });
-        console.dir(solution);
+        solution = JSON.stringify(curBoard.rows());
         return;
       }
       for (var curRow = 0; curRow < n; curRow++){
@@ -153,7 +148,11 @@ window.findNQueensSolution = function(n) {
   placeElemInRow(0);
 
   console.log('Single solution for ' + n + ' queens:', JSON.stringify(solution));
-  return solution || (new Board({'n':n}).rows());
+  if (solution) {
+    return JSON.parse(solution);
+  } else {
+    return (new Board({'n':n}).rows());
+  }
 };
 
 
